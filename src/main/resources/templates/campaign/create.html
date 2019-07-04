@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/main_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Campaign</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <div class="w3-card-4">
+        <div class="w3-container w3-green">
+            <h1>Create Campaign</h1>
+        </div>
+        <form class="w3-container" action="/campaigns/create" method="post" th:object="${campaign}">
+            <p>
+                <label class="w3-text-green">Name:</label>
+                <input class="w3-input w3-border w3-sand" type="text" th:field="*{name}">
+                <span class="w3-text-red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </p>
+            <p>
+                <label class="w3-text-green">Description:</label>
+                <textarea class="w3-input w3-border w3-sand" rows="4" cols="50" th:field="*{description}"></textarea>
+            </p>
+            <p>
+                <label class="w3-text-green">Phone Number</label>
+                <input class="w3-input w3-border w3-sand" type="text" th:field="*{phoneNumber}">
+                <span class="w3-text-red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+            </p>
+            <p>
+                <label class="w3-text-green">Start day:</label>
+                <input class="w3-input w3-border w3-sand" type="date" th:field="*{startDay}">
+                <span class="w3-text-red" th:if="${#fields.hasErrors('startDay')}" th:errors="*{startDay}"></span>
+            </p>
+            <p>
+                <label class="w3-text-green">End day:</label>
+                <input class="w3-input w3-border w3-sand" type="date" th:field="*{endDay}">
+                <span class="w3-text-red" th:if="${#fields.hasErrors('endDay')}" th:errors="*{endDay}"></span>
+            </p>
+            <p>
+                <button class="w3-btn w3-green" type="submit">Create campaign</button>
+            </p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

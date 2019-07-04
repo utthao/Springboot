@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/main_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>View Student</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <h3 class="box-title">View Class</h3>
+    <div>
+        <label class="col-sm-2">Name:</label>
+        <label th:text="${classes.getName()}"></label>
+    </div>
+    <div>
+        <label class="col-sm-2">Course</label>
+        <label th:text="${classes.course.getName()}"></label>
+    </div>
+    <div>
+        <label class="col-sm-2">Start Day</label>
+        <label th:text="${classes.getStartDay()}"></label>
+    </div>
+    <div>
+        <label class="col-sm-2">End Day</label>
+        <label th:text="${classes.getEndDay()}"></label>
+    </div>
+    <div>
+        <label class="col-sm-2">Learning Status</label>
+        <label th:text="${classes.getLearningStatus()}"></label>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/main_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Class</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <h3 class="box-title">Edit Class</h3>
+    <form class="form-horizontal" action="/classes/create" method="post" th:object="${classes}">
+        <div>
+            <label for="inputName" class="col-sm-2 control-label"><b>Name</b></label>
+            <input type="text" th:field="*{name}" class="form-control" id="inputName" placeholder="Name">
+            <span th:if="${#fields.hasErrors('name')}"><i class="fa fa-times-circle-o" th:errors="*{name}"></i></span>
+        </div>
+
+        <div>
+            <label class="col-sm-2 custom-control-label"><b>Start day</b></label>
+            <input class="form-control" type="date" th:field="*{startDay}">
+            <span th:if="${#fields.hasErrors('startDay')}"><i class="fa fa-times-circle-o" th:errors="*{startDay}"></i></span>
+        </div>
+
+        <div>
+            <label class="col-sm-2 custom-control-label"><b>End day</b></label>
+            <input class="form-control" type="date" th:field="*{endDay}">
+            <span th:if="${#fields.hasErrors('endDay')}"><i class="fa fa-times-circle-o" th:errors="*{endDay}"></i></span>
+        </div>
+
+        <div>
+            <tr>
+                <label class="col-sm-2 custom-control-label"><b>Course</b></label>
+                <td>
+                    <select class="selected w3-blue-grey" th:field="*{course}">
+                        <option class="w3-blue-grey" th:each="c:${course}"
+                                th:value="${c.id}"
+                                th:text="${c.name}">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+        </div>
+
+        <div>
+            <label class="col-sm-2 custom-control-label"><b>Learning Status</b></label>
+            <select name="learningStatus">
+                <option value="Learning">Learning</option>
+                <option value="Graduated">Graduated</option>
+            </select>
+        </div>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-info pull-right">Update class</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
